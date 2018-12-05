@@ -7,12 +7,12 @@
 
 - **问题：ArrayList 内部是怎么存放数据的？**
 
-ArrayList 可以看做是数组的封装，使用 elementData 数组来存储数据，使用 size 来代表 elementData 的非 null 元素个数。elementData 前没有访问修饰符，所以只有同类和同包下的类可以直接方法，所以外界想要知道 ArrayList 实例内元素的个数就要通过 size 属性。elementData 数组类型是 Object 类型，可以存放任意的引用类型，不能存放基本的数据类型。
+ArrayList 可以看做是数组的封装，使用 elementData 数组来存储数据，使用 size 来代表 elementData 的非 null 元素个数。elementData 前没有访问修饰符，所以只有同类和同包下的类可以直接方法，外界想要知道 ArrayList 实例内元素的个数就要通过 size 属性。elementData 数组类型是 Object 类型，可以存放任意的引用类型，不能存放基本的数据类型。
 
 
 - **问题：ArrayList 类常量 EMPTY_ELEMENTDATA 和 DEFAULTCAPACITY_EMPTY_ELEMENTDATA 怎么理解？是不是多余？**
 
-这两个类常量都是代表空 Object 数组，都代表 ArrayList 实例的空状态，也即是 elementData 数组中还没有元素。但是 EMPTY_ELEMENTDATA 是使用带初始化值的构造方法（有参构造函数，一个是指定初始容量，一个是指定初始集合）时使用的，DEFAULTCAPACITY_EMPTY_ELEMENTDATA 是使用默认的构造方法，也即是无参的构造方法时使用的。
+这两个类常量都是空 Object 数组的引用，都代表 ArrayList 实例的空状态，也即是 elementData 数组中还没有元素。但是 EMPTY_ELEMENTDATA 是使用带初始化值的构造方法（有参构造函数，一个是指定初始容量，一个是指定初始集合）时使用的，DEFAULTCAPACITY_EMPTY_ELEMENTDATA 是使用默认的构造方法，也即是无参的构造方法时使用的。
 
 
 - **问题：ArrayList 是怎样实现扩充的？**
@@ -64,6 +64,6 @@ Arrays.copyOf(T[], int length) 方法是 Arrays 工具类中用来进行任意�
 
 - **问题：ArrayList 中既有 Itr 迭代器类，又有 ListItr 迭代器类，该用哪个？**
 
-集合可以看作是数组的包装类型，遍历并不像数组那样方便，迭代器是为了迭代集合中的元素而存在的。Itr 迭代器类实现了 Iterator 接口，ListItr 迭代器类继承 Itr 迭代器类，并且实现了 ListIterator 接口，所以 ListItr 类的功能比 Itr 类更强大。Itr 类在迭代过程中不能修改 List 的结构（如 add 操作），否则会抛出并发修改异常 ConcurrentModificationException，并且在 next 方法之后才能 remove 元素，而 ListItr 类还支持在迭代过程中添加元素，对于 List 集合元素操作更加友好。所以对于 List 集合迭代，最好使用 ListItr 迭代器类。
+List 集合可以看作是数组的包装类型，遍历并不像数组那样方便，迭代器是为了迭代集合中的元素而存在的。Itr 迭代器类实现了 Iterator 接口，ListItr 迭代器类继承 Itr 迭代器类，并且实现了 ListIterator 接口，所以 ListItr 类的功能比 Itr 类更强大。Itr 类在迭代过程中不能修改 List 的结构（如 add 操作），否则会抛出并发修改异常 ConcurrentModificationException，并且在 next 方法之后才能 remove 元素，而 ListItr 类还支持在迭代过程中添加元素，对于 List 集合元素操作更加友好。所以对于 List 集合迭代，最好使用 ListItr 迭代器类。
 
 
