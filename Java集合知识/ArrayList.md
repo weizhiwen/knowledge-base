@@ -1,3 +1,5 @@
+# 对 java.util.ArrayList 的理解
+
 - **问题：ArrayList 的 size 和 capacity 怎么理解？**
 
 如果把 ArrayList 看作一个杯子的话，capacity 就是杯子的容积，也就是代表杯子能装多少东西，而 size 就是杯子装的东西的体积。杯子可能装满了，也可能没装满，所以 capacity >= size 。capacity 过大和过小都不好，过大会造成浪费，过小又存放不下多个元素的值，capacity == size，则 ArrayList 空间利用率最大，但是不利于添加新的元素。当 ArrayList 实例内的元素个数不再改变了，可以使用 trimToSize() 方法最小化 ArrayList 实例来节省空间，也即是使 capacity == size。
