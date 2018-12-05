@@ -1,0 +1,1 @@
+IDEA 查看源码，返回上次查看的位置快捷键 Ctrl + Alt + ⬅/➡失效，原因是和Win10系统的图像设置快捷键冲突了[参考文章](https://blog.csdn.net/u010814849/article/details/76682701)。
