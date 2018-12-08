@@ -21,7 +21,7 @@ import sun.misc.SharedSecrets;
  * this class provides methods to manipulate the size of the array that is
  * used internally to store the list.  (This class is roughly equivalent to
  * <tt>Vector</tt>, except that it is unsynchronized.)
- * 可调整大小的数据实现自 List 接口，实现了所有可选择的列表操作的方法和所有的元素，包括 null。
+ * 可调整大小的数据实现自 List 接口，实现了所有可选择的列表操作的方法和允许所有的元素，包括 null。
  * 除了实现 List 接口外，这个类（ArrayList） 还提供了一些方法用来控制存储列表内部的数组大小。
  * （除了它不是同步的外，这个类大致相当于 Vector（类））
  * 
@@ -92,9 +92,8 @@ import sun.misc.SharedSecrets;
  * concurrent modification, the iterator fails quickly and cleanly, rather
  * than risking arbitrary, non-deterministic behavior at an undetermined
  * time in the future.
- * 这个类（ArrayList）的 iterator() 方法返回出来的迭代器和 listIterator 方法都是 fail-fast 的。
- * 如果列表在迭代器创建之后在结构上被修改，除了调用迭代器的 remove 方法和 add 方法外，迭代器都会抛出
- * ConcurrentModificationException 异常。
+ * 这个类（ArrayList）的 iterator() 方法和 listIterator 方法返回出来的迭代器都是 fail-fast 的。
+ * 如果列表在迭代器创建之后在结构上被修改，除了调用迭代器的 remove 方法和 add 方法外，迭代器都会抛出 ConcurrentModificationException 异常。
  * 因此，在并发修改情况下，迭代器快速干净地出 fail，而不是在未来某个不确定的时间，冒任意和不确定的风险。
  * 
  * 
@@ -110,6 +109,7 @@ import sun.misc.SharedSecrets;
  * fail-fast 的迭代器会尽最大的努力抛出 ConcurrentModificationException 异常。
  * 因此，写程序依赖这个异常为了正确性这点是错误的，迭代器的 fail-fast 行为仅仅被用来检查（程序中的） bug。
  * 
+ *
  * <p>This class is a member of the
  * <a href="{@docRoot}/../technotes/guides/collections/index.html">
  * Java Collections Framework</a>.
@@ -413,6 +413,8 @@ public class ArrayList<E> extends AbstractList<E>
      * 更正式的说是，返回最小的索引，
      * 就像这样 (o == null ? get(i) == null : o.equals(get(i)))
      * 或者（列表中）没有该元素的索引就返回 -1
+     * 这里方法注释是源码注释不规范（不是我翻译时漏了），没有参数和返回值的注释，
+     * 不知道是编写这个类中哪个大佬的锅，txtx
      */
     public int indexOf(Object o) {
         // 判断 o 是不是指向 null

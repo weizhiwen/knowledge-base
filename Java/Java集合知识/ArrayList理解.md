@@ -17,7 +17,7 @@ ArrayList 可以看做是数组的封装，使用 elementData 数组来存储数
 
 - **问题：ArrayList 是怎样实现扩充的？**
 
-扩容是发生在添加操作前的，要保证要添加元素在 elementData 数组中有位置，也即是 size 加上要添加的元素个数要小于 capacity（size + num <= capacity 就说明容量是充足的），所以在添加方法中，先调用 ensureCapacityInternal(int) 方法来确保 elementData 容量充足，然后再进行具体的添加操作。如果 ensureCapacityInternal 方法（ensureCapacityInternal 方法中有调用了其他方法）发现数组容量不够了，就会扩容。扩容实际的方法是 grow(int) 方法，使用位运算符来使数组的容量扩容 1.5 倍。但是需要注意的是，没有指定初始化值的 ArrayList 实例，第一次扩容并不是以 1.5 倍扩容的，而是使用的默认容量 10，所以网上很多直接说 ArrayList 扩容是 1.5 倍也有不当之处，这点从 JDK 源码中可以很明确的看出来。
+扩容是发生在添加操作前的，要保证要添加元素在 elementData 数组中有位置，也即是 size 加上要添加的元素个数要小于 capacity（size + num <= capacity 就说明容量是充足的），所以在添加方法中，先调用 ensureCapacityInternal(int) 方法来确保 elementData 容量充足，然后再进行具体的添加操作。如果 ensureCapacityInternal 方法（ensureCapacityInternal 方法中有调用了其他方法）发现数组容量不够了，就会扩容。扩容实际的方法是 grow(int) 方法，使用位运算符来使数组的容量扩容 1.5 倍。但是需要注意的是，没有指定初始化值的 ArrayList 空实例，第一次扩容并不是以 1.5 倍扩容的，而是使用的默认容量 10，所以网上很多直接说 ArrayList 扩容是 1.5 倍也有不当之处，这点从 JDK 源码中可以很明确的看出来。
 如果在构造 ArrayList 实例时，指定初始化值（初始化容量或者集合），那么就会创建指定大小的 Object 数组，并把该数组对象的引用赋值给 elementData；如果不指定初始化值，在第一次添加元素值时会使用默认的容量大小 10 作为 elementData 数组的初始容量，使用 Arrays.conpyOf() 方法创建一个 Object[10] 数组。
 
 
