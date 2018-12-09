@@ -102,7 +102,7 @@ public class LinkedList<E>
      * Pointer to first node.
      * Invariant: (first == null && last == null) ||
      *            (first.prev == null && first.item != null)
-     * 指向第一个 node（Node 类的定义在下面）
+     * 指向第一个 node（Node 类的定义在下面），序列化时该值不会被带上
      */
     transient Node<E> first;
 
@@ -110,7 +110,7 @@ public class LinkedList<E>
      * Pointer to last node.
      * Invariant: (first == null && last == null) ||
      *            (last.next == null && last.item != null)
-     * 指向最后一个 node（Node 类的定义在下面）
+     * 指向最后一个 node（Node 类的定义在下面），序列化时该值不会被带上
      */
     transient Node<E> last;
 
@@ -770,7 +770,7 @@ public class LinkedList<E>
      * 返回值为列表中第一次出现指定元素的索引（下标），如果列表中不存在这个（指定）元素就返回 -1
      */
     public int indexOf(Object o) {
-        // 从前向后找
+        // 给出元素的值，从前向后找
         int index = 0;
         if (o == null) {
             for (Node<E> x = first; x != null; x = x.next) {
@@ -806,7 +806,7 @@ public class LinkedList<E>
      * 返回值为列表中最后一次出现指定元素的索引（下标），如果列表中不存在这个（指定）元素就返回 -1
      */
     public int lastIndexOf(Object o) {
-        // 从后往前找
+        // 给出元素的值，从后往前找
         int index = size;
         if (o == null) {
             for (Node<E> x = last; x != null; x = x.prev) {
@@ -1125,6 +1125,7 @@ public class LinkedList<E>
         return new ListItr(index);
     }
 
+    // 列表迭代器，可以参考 ArrayList 中的列表迭代器
     private class ListItr implements ListIterator<E> {
         private Node<E> lastReturned;
         private Node<E> next;
