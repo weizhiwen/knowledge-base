@@ -34,7 +34,7 @@
 
 使用命令 `cd /etc/sysconfig/network-scripts` 进入网卡配置文件夹，`ls` 查看文件，ifcfg-enth0 等文件就是网卡配置文件，vi 命令打开编辑文件。
 
-![](D:\CodeWorkspace\KonwledgeBase\杂七杂八\软件相关\images\系统环境设置.png)
+![系统环境配置](./images/系统环境配置.png)
 
 注意红线框住的那几行，**IPADDR** 为你手动为系统分配的静态IP地址，**NETMASK** 为子网掩码，**GATEWAY** 为网关（和你前面配置的一样），**DNS1** 要和网卡配置一样。
 
