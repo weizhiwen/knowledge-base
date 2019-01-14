@@ -14,7 +14,7 @@
 
 3、在系统的网络连接中，找到 VMnet8 网卡，属性中查看 IPv4 的配置，是否和虚拟机编辑器中配置的相同，IP 地址、子网掩码：255.255.255.0、默认网关和虚拟机编辑器设置的网关保持一致。
 
-![VMWare方式](./images/VMWare方式.gif)
+![VMware方式](./images/VMware方式.gif)
 
 ## 2、VirtualBox 中的配置
 
