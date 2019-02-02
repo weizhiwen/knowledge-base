@@ -35,3 +35,53 @@
 - volatile 不需要加锁，比 synchronized 更轻量级，不会阻塞线程
 - 从内存可见性角度看，volatile 读相当于加锁，volatile 写相当于解锁
 - synchronized 既可以保证可见性，又可以保证原子性，而 volatile 只能保证可见性，不能保证原子性
+
+测试代码；
+
+``` java
+/**
+ * volatile 关键字测试
+ * 
+ * @author Administrator
+ *
+ */
+public class VolatileTest {
+    // 可以加上和去掉 volatile 关键字分别运行
+	private volatile boolean flag = false;
+
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+
+	public static void main(String[] args) {
+		VolatileTest volatileTest = new VolatileTest();
+		// 创建子线程
+		Thread thread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				volatileTest.setFlag(true);
+				System.out.println("flag = " + volatileTest.isFlag());
+			}
+		});
+		thread.start();
+		// 主线程
+		while (true) {
+			if (volatileTest.isFlag()) {
+				System.out.println("读取到子线程修改的值");
+				break;
+			}
+		}
+
+	}
+}
+```
