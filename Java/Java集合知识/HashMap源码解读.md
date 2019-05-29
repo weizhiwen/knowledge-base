@@ -1,4 +1,4 @@
-LinkedList 源码（如无特殊说明，都是基于 JDK1.8 的）：
+HashMap 源码（如无特殊说明，都是基于 JDK1.8 的）：
 ``` java
 /*
  * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
